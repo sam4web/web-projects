@@ -1,0 +1,146 @@
+$global-transition: 230ms all linear;
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.project {
+  .section-title {
+    position: relative;
+
+    span {
+      color: $pri_light;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8%;
+      height: 3px;
+      background-color: $pri_clr;
+      border-radius: 40px;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .project-item {
+    padding: 20px 0;
+    transition: $global-transition;
+    max-width: 500px;
+
+    &:hover {
+      .project-item__title {
+        &::before,
+        &::after {
+          margin: 0 10px;
+        }
+      }
+
+      .project-item__image {
+        &::after {
+          width: 100%;
+        }
+        img {
+          transform: scale(1.15);
+        }
+
+        ul {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__image {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+        rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+      width: 100%;
+      height: 260px;
+      transition: $global-transition;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+
+      @include responsive_small {
+        height: 200px;
+      }
+
+      ul {
+        display: flex;
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: 150ms all linear 200ms;
+
+        a {
+          margin: 0 15px;
+          font-size: 20px;
+          color: $pri_clr;
+          cursor: pointer;
+          transition: $global-transition;
+
+          &:hover {
+            color: $pri_light;
+          }
+        }
+      }
+
+      &::after {
+        content: '';
+        width: 0%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #ffffffcc;
+        transition: $global-transition;
+      }
+
+      img {
+        border-radius: inherit;
+        transition: $global-transition;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__title {
+      padding: 10px 5px;
+      font-size: 22px;
+      cursor: context-menu;
+      transition: $global-transition;
+
+      a {
+        color: $pri_clr;
+      }
+
+      &:hover {
+        &::before,
+        &::after {
+          color: $pri_light;
+        }
+      }
+
+      &::before,
+      &::after {
+        margin: 0 5px;
+        transition: $global-transition;
+      }
+
+      &::before {
+        content: '<';
+      }
+      &::after {
+        content: '/>';
+      }
+    }
+  }
+}
