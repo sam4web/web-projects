@@ -8,13 +8,14 @@ $global-transition: 230ms all linear;
   float: left;
 }
 
+.project-container {
+  margin-top: 65px;
+}
+
 .project {
   .section-title {
     position: relative;
-
-    span {
-      color: $pri_light;
-    }
+    color: $black;
 
     &::after {
       content: '';
@@ -113,6 +114,7 @@ $global-transition: 230ms all linear;
     }
 
     &__title {
+      text-transform: capitalize;
       padding: 10px 5px;
       font-size: 22px;
       cursor: context-menu;
